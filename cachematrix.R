@@ -1,8 +1,14 @@
 ## Avoid recalculating matrix inverse by creating a function list
-## that stores the results of a previous inverse calculation
+## that is able to store the results of a previous inverse calculation
 
-## This function creates a list of functions used to store
-## inverse matrix calculation
+## makeCacheMatrix function creates a list of functions used to store
+## inverse matrix calculation.  Input is a matrix and output is a list of matrix
+## functions.
+
+##set function will cache the matrix
+##get will retrieve the matrix
+##setinverse will cache the inverse matrix
+##getinverse will retrieve the inverse matrix
 
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
@@ -20,8 +26,12 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Run this function after the makeCacheMatrix
-## has been run to create the "matrix" object
+## cacheSolve requires the matrix list created by makeCacheMatrix
+## as input.  Will retrieve inverse matrix result if already calculated
+## otherwise will calculate, cache and report the inverse.
+
+## warning, this function does not test if matrix is invertable
+
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
